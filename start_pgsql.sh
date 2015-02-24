@@ -33,15 +33,13 @@ if [[ ! -f "$INITIALIZED_FILE" ]]; then
     mkdir -p "/opt/postgresql/$POSTGRESQL_VERSION/main"
     chown -R postgres:postgres "/opt/postgresql/$POSTGRESQL_VERSION/main"
     su postgres -c "$PGPATH/initdb -D $PGDATA" 
-    su postgres -c "$PGPATH/postgres --single -D $PGDATA" <<EOF
+    su postgres -c "$PGPATH/postgres --single -D $PGDATA -c config_file=/etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf" <<EOF
 CREATE USER root WITH SUPERUSER PASSWORD '$DB_PASSWORD';
 CREATE DATABASE root OWNER root;
 EOF
     touch "$INITIALIZED_FILE"
+    touch /opt/postgresql/initialized
 fi
 
-# symlink initialized flag
-ln -sf "$INITIALIZED_FILE" /opt/postgresql/initialized
-
 # run postgresql database
-exec su postgres -c "$PGPATH/postgres -D $PGDATA -c 'listen_addresses=*'"
+exec su postgres -c "$PGPATH/postgres -D $PGDATA -c config_file=/etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf -c 'listen_addresses=*'"
