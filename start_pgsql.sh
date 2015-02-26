@@ -25,7 +25,6 @@ fi
 # upgrade initialized flag
 if [[ -f /opt/postgresql/initialized ]]; then
     touch "$INITIALIZED_FILE"
-    rm -f /opt/postgresql/initialized
 fi
 
 # initialize database
