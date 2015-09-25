@@ -5,7 +5,7 @@ DEBIAN_FRONTEND=noninteractive
 
 set -xe
 apt-get update -qq
-apt-get install -y -q wget lsb_release
+apt-get install -y -q wget lsb-release
 
 DEBIAN_CODENAME=$(lsb_release -sc)
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
