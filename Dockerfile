@@ -1,5 +1,5 @@
-FROM	ubuntu:12.04
-MAINTAINER	kload "kload@kload.fr"
+FROM	debian:latest
+MAINTAINER	Jindrich Skupa "jindrich.skupa@netbrick.eu"
 
 RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive \
 	echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d && \
