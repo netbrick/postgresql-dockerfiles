@@ -1,5 +1,5 @@
-FROM ubuntu:trusty
-MAINTAINER "Kamil Trzcinski <ayufan@ayufan.eu>"
+FROM debian:latest
+MAINTAINER "Jindrich Skupa <jindrich.skupa@netbrick.eu>"
 
 RUN # This image is based on: https://github.com/Kloadut/dokku-pg-dockerfiles
 
