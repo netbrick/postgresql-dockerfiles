@@ -2,7 +2,7 @@ Dockerfiles
 -----------
 
 ```
-docker build -t dokku/postgresql https://github.com/dokku-alt/postgresql-dockerfiles
+docker build -t dokku-alt/postgresql https://github.com/netbrick/postgresql-dockerfiles#9.4
 ```
 
 Thanks
