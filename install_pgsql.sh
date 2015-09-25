@@ -2,13 +2,14 @@
 
 LC_ALL=C
 DEBIAN_FRONTEND=noninteractive
+DEBIAN_CODENAME=$(lsb_release -sc)
 
 set -xe
 apt-get update -qq
 apt-get install -y -q wget
 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" >> /etc/apt/sources.list.d/postgresql.list
+echo "deb http://apt.postgresql.org/pub/repos/apt/ ${DEBIAN_CODENAME}-pgdg main" >> /etc/apt/sources.list.d/postgresql.list
 
 echo -e '#!/bin/sh\nexit 101' > /usr/sbin/policy-rc.d
 chmod +x /usr/sbin/policy-rc.d
